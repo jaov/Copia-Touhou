@@ -16,13 +16,14 @@ import javax.swing.JLabel;
 public class Objeto extends JLabel{
 
     private int x;
-    private int y,hp,orientacion;
+    private int y,hp,orientacionH, orientacionV;
     boolean isAlive;
 
     public Objeto(int x, int y, Icon image, int tipo) {
         super(image);
         this.x = x;
-        this.orientacion=0;
+        this.orientacionH=0;
+        this.orientacionV=0;
         this.y = y;
         this.hp=Resources.Datos.vectorhp[tipo];
 
@@ -45,7 +46,7 @@ public class Objeto extends JLabel{
     }
     
     public void moverse(){
-        this.x+=orientacion;
+        this.x+=orientacionH;
     }
 
     public void setX(int x) {
@@ -60,9 +61,14 @@ public class Objeto extends JLabel{
         this.hp = hp;
     }
 
-    public void setOrientacion(int orientacion) {
-        this.orientacion *= orientacion;
+    public void setOrientacionH(int orientacionH) {
+        this.orientacionH *= orientacionH;
     }
+
+    public void setOrientacionV(int orientacionV) {
+        this.orientacionV = orientacionV;
+    }
+    
 
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
@@ -73,10 +79,10 @@ public class Objeto extends JLabel{
         return isAlive;
     }
     public void movY(int paso){
-        this.y+=paso;
+        this.y+=paso*this.orientacionV;
     }
     public void movX(int paso){
-        this.x+=paso*this.orientacion;
+        this.x+=paso*this.orientacionH;
     }
     
     

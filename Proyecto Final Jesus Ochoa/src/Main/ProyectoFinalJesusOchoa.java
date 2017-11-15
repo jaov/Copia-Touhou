@@ -16,6 +16,7 @@ public class ProyectoFinalJesusOchoa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        FramePrincipal frame = new FramePrincipal();
     }
     
 }

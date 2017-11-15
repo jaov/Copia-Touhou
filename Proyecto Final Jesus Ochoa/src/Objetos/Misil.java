@@ -8,16 +8,11 @@ package Objetos;
 import javax.swing.Icon;
 
 
-public class Enemigos extends Objeto {
+public class Misil extends Objeto {
 
-    public Enemigos(int x, int y, Icon image, int tipo) {
+    public Misil(int x, int y, Icon image, int tipo) {
         super(x, y, image, tipo);
     }
-    public void cuandoColisiona(boolean esAliado){
-        super.cuandoColisiona(esAliado);
-        if (esAliado) {
-            this.setOrientacionH(-1);
-        }
-    }
+
     
 }
