@@ -20,9 +20,11 @@ public class CargaImagen {
 
     BufferedImage spritesheet;
     BufferedImage[][] personaje;
-    int x, y, w, h, pasoH, pasoV;
+    int x, y, w, h, pasoH, pasoV,c,f;
 
     public CargaImagen(int x, int y, int w, int h, int c, int f,int pasoH, int pasoV, String url ) {
+        this.c=c;
+        this.f=f;
         this.personaje = new BufferedImage[f][c];
         try {
             this.spritesheet = ImageIO.read(new File(url));
@@ -104,6 +106,15 @@ public class CargaImagen {
     public void setPasoV(int pasoV) {
         this.pasoV = pasoV;
     }
+
+    public int getC() {
+        return c;
+    }
+
+    public int getF() {
+        return f;
+    }
+    
     public BufferedImage getImagen(int i, int j){
         return personaje[i][j];
     }
