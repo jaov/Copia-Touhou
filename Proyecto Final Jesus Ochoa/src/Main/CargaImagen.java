@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package prueba1;
+package Main;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,9 +19,9 @@ import javax.imageio.ImageIO;
  */
 public class CargaImagen {
 
-    BufferedImage spritesheet;
-    BufferedImage[][] personaje;
-    int x, y, w, h, pasoH, pasoV,c,f;
+    private BufferedImage spritesheet;
+    private BufferedImage[][] personaje;
+    private int x, y, w, h, pasoH, pasoV,c,f;
 
     public CargaImagen(int x, int y, int w, int h, int c, int f,int pasoH, int pasoV, String url ) {
         this.c=c;
@@ -115,8 +116,8 @@ public class CargaImagen {
         return f;
     }
     
-    public BufferedImage getImagen(int i, int j){
-        return personaje[i][j];
+    public ImageIcon getImagen(int i, int j){
+        return new ImageIcon(personaje[i][j]);
     }
 //</editor-fold>
     
