@@ -12,6 +12,7 @@ public class Gasolina extends Objeto {
 
     public Gasolina(int x, int y, Icon image, int tipo) {
         super(x, y, image, tipo);
+        this.setVisible(true);
     }
     
 }

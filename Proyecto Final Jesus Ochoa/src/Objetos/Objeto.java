@@ -24,29 +24,33 @@ public class Objeto extends JLabel{
         super(image);
         //this.setSize(image.getIconWidth(), image.getIconHeight());
         this.setBounds(x, y, image.getIconWidth(), image.getIconHeight());
-        //this.x = x;
+        this.x = x;
         this.indiceFP=0;
         this.indiceCP=0;
         this.orientacionH=0;
         this.orientacionV=0;
-        //this.y = y;
+        this.isAlive=true;
+        //this.setVisible(true);
+        this.y = y;
         this.hp=Resources.Datos.vectorhp[tipo];
-
+        //this.setVisible(true);
         //0 avion, 1 barco, 2 gasolina, 3 misil, 4 pared
         
         
     }
     public Rectangle getRectangulo(){
-        return new Rectangle(x, y, this.getWidth(), this.getHeight());
+        return new Rectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
     }
     
     public void cuandoColisiona(boolean esAliado){
+        System.out.println("colision!");
         if (!esAliado) {
             this.hp--;
         }    
         
         if (hp<=0) {
             this.isAlive=false;
+            System.out.println("murio "+this.getClass().getCanonicalName());
         }
     }
     
@@ -82,10 +86,11 @@ public class Objeto extends JLabel{
         return isAlive;
     }
     public void movY(int paso){
-        this.y+=paso*this.orientacionV;
+        this.setLocation(this.getX(), this.getY()+paso*this.orientacionV);
+        
     }
     public void movX(int paso){
-        this.x+=paso*this.orientacionH;
+        this.setLocation(this.getX()+paso*this.orientacionH, this.getY());
     }
     
     

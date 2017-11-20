@@ -16,6 +16,7 @@ public class Misil extends Objeto {
             this.setOrientacionV(-1);
         }
         else this.setOrientacionV(1);
+        this.setVisible(true);
     }
 
     
