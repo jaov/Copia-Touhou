@@ -8,6 +8,7 @@ package Objetos;
 import javax.swing.Icon;
 
 
+
 public class Enemigo extends Objeto {
 
     public Enemigo(int x, int y, Icon image, int tipo) {

@@ -19,6 +19,7 @@ public class Objeto extends JLabel{
     private int y,hp,orientacionH, orientacionV;
     private int indiceFP, indiceCP;
     boolean isAlive;
+    int tipo;
 
     public Objeto(int x, int y, Icon image, int tipo) {
         super(image);
@@ -32,6 +33,7 @@ public class Objeto extends JLabel{
         this.isAlive=true;
         //this.setVisible(true);
         this.y = y;
+        this.tipo=tipo;
         this.hp=Resources.Datos.vectorhp[tipo];
         //this.setVisible(true);
         //0 avion, 1 barco, 2 gasolina, 3 misil, 4 pared
@@ -91,6 +93,10 @@ public class Objeto extends JLabel{
     }
     public void movX(int paso){
         this.setLocation(this.getX()+paso*this.orientacionH, this.getY());
+    }
+
+    public int getTipo() {
+        return tipo;
     }
     
     

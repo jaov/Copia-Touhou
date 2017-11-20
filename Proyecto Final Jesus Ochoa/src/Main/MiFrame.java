@@ -28,7 +28,7 @@ public class MiFrame extends JFrame{
     CargaImagen cargaImagen, cargaMisil,cargaEnemigo, cargaGasolina;
     int indiceC, indiceF, indiceM, indiceD;
     Enemigo e1;
-    int paso ;
+    int paso, puntuacion;
     int indicePaso;
     Timer animaciones;
     Misil[] misil;
@@ -40,6 +40,7 @@ public class MiFrame extends JFrame{
     public MiFrame() {
         
         super("River Raid");
+        this.puntuacion = 0;
         this.indiceD = 0;
         this.paso = 1;
         this.indicePaso = 1;
@@ -106,7 +107,7 @@ public class MiFrame extends JFrame{
         /*System.out.println("pos xy personaje: "+personaje.getX()+","+personaje.getY());
         System.out.println("personaje ancho: "+personaje.getWidth()+", alto: "+personaje.getHeight());*/
         labelTexto = new JLabel("Magia: " + personaje.getGasolina());
-        labelTexto.setBounds(0,400, 100,40);
+        labelTexto.setBounds(0,0,300,60);
         //mipanel.setSize(800, 600);
         
         add(mipanel);
@@ -135,7 +136,7 @@ public class MiFrame extends JFrame{
                 indiceC++;
                 indiceM++;
                 personaje.setGasolina(personaje.getGasolina()-2);
-                labelTexto.setText("Magia: " + personaje.getGasolina());
+                labelTexto.setText("Magia: " + personaje.getGasolina()+"              Puntuacion:"+puntuacion);
                 if(indiceC>=cargaImagen.getC() && indiceF==0){
                     indiceC=0;
                 };
@@ -146,12 +147,14 @@ public class MiFrame extends JFrame{
                 e1.movX(paso*10);
                 if (e1.getRectangulo().intersects(personaje.getRectangulo())) {
                     e1.cuandoColisiona(false);
+                    
                     personaje.cuandoColisiona(false);
                 }
                 if (gas.getRectangulo().intersects(personaje.getRectangulo())) {
                     gas.cuandoColisiona(false);
                     personaje.cuandoColisiona(true);
                 }
+                
                 if (gas.getY()>=MiFrame.this.getHeight()-gas.getHeight() || !gas.isAlive()) {
                     gas.setLocation(pos.nextInt(20)*20,pos.nextInt(20)*15);
                     gas.setIsAlive(true);
@@ -164,11 +167,18 @@ public class MiFrame extends JFrame{
                 for (Misil misil1 :misil) {
                     //misil1.movY(paso[indicePaso]);
                     misil1.setIcon(cargaMisil.getImagen(0, indiceC));
-                    
+                    if (misil1.getRectangulo().intersects(gas.getRectangulo())&&misil1.getY()>=50){
+                        misil1.cuandoColisiona(false);
+                        gas.cuandoColisiona(false);
+                        puntuacion+=Datos.puntos[gas.getTipo()];
+                    }
                     if (misil1.getRectangulo().intersects(e1.getRectangulo())) {
                         System.out.println("misil choca enemigo");
                         e1.cuandoColisiona(false);
                         misil1.cuandoColisiona(false);
+                        if (!e1.isAlive()) {
+                        puntuacion+=Datos.puntos[e1.getTipo()];
+                        }
                     }
                     if (misil1.getY()<=0 || !misil1.isAlive()) {
                         personaje.setMunicion(personaje.getMunicion()+1);
