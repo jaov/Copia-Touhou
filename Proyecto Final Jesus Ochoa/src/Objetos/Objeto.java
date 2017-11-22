@@ -19,6 +19,14 @@ public class Objeto extends JLabel{
     private int y,hp,orientacionH, orientacionV;
     private int indiceFP, indiceCP;
     boolean isAlive;
+
+    public int getOrientacionH() {
+        return orientacionH;
+    }
+
+    public int getOrientacionV() {
+        return orientacionV;
+    }
     int tipo;
 
     public Objeto(int x, int y, Icon image, int tipo) {
@@ -28,8 +36,8 @@ public class Objeto extends JLabel{
         this.x = x;
         this.indiceFP=0;
         this.indiceCP=0;
-        this.orientacionH=0;
-        this.orientacionV=0;
+        this.orientacionH=1;
+        this.orientacionV=1;
         this.isAlive=true;
         //this.setVisible(true);
         this.y = y;
@@ -87,16 +95,18 @@ public class Objeto extends JLabel{
     public boolean isAlive() {
         return isAlive;
     }
-    public void movY(int paso){
-        this.setLocation(this.getX(), this.getY()+paso*this.orientacionV);
+    public void mover(int paso){
+        this.setLocation(this.getX()+paso*this.orientacionH, this.getY()+paso*this.orientacionV);
         
     }
-    public void movX(int paso){
-        this.setLocation(this.getX()+paso*this.orientacionH, this.getY());
-    }
+    
 
     public int getTipo() {
         return tipo;
+    }
+
+    public int getHp() {
+        return hp;
     }
     
     

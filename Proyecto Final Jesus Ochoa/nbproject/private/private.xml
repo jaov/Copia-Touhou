@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/ochoa/UNET/Proyecto%20Final%20Jesus%20Ochoa/src/Objetos/Enemigo.java</file>
+            <file>file:/home/ochoa/UNET/Proyecto%20Final%20Jesus%20Ochoa/src/Main/MiFrame.java</file>
+            <file>file:/home/ochoa/UNET/Proyecto%20Final%20Jesus%20Ochoa/src/Objetos/Objeto.java</file>
+            <file>file:/home/ochoa/UNET/Proyecto%20Final%20Jesus%20Ochoa/src/Main/CargaImagen.java</file>
+        </group>
     </open-files>
 </project-private>
